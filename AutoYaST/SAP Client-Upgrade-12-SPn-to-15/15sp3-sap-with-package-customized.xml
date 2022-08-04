@@ -461,6 +461,8 @@ mv RHN-ORG-TRUSTED-SSL-CERT /mnt/etc/pki/trust/anchors/
 /usr/sbin/update-ca-certificates
 ]]>
         </source>
+    </chroot-scripts>
+  <init-scripts config:type="list">	    
 <script>
     <filename>uyuni-minion.sh</filename>
     <source>
