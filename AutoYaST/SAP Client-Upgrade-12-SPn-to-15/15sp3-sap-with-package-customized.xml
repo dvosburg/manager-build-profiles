@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <!DOCTYPE profile>
-<!-- Profile updated by dvosburg at suse dot com 20220525 - Upgrade to SLES 15 SP3 for SAP
+<!-- Profile updated by dvosburg at suse dot com 20220804 - Upgrade to SLES 15 SP3 for SAP
 It assumes system variables plus these entered on the variables tab:
 org='organization_id'
 distrotree='autoinstallation_distribution_label'
@@ -461,14 +461,17 @@ mv RHN-ORG-TRUSTED-SSL-CERT /mnt/etc/pki/trust/anchors/
 /usr/sbin/update-ca-certificates
 ]]>
         </source>
-      </script>
-    </chroot-scripts>
-  <init-scripts config:type="list">
-  <script>
+<script>
     <filename>uyuni-minion.sh</filename>
     <source>
         <![CDATA[
-cat <<EOF >"/etc/salt/minion.d/susemanager.conf"
+SALT_MINION_CONF_DIR="/etc/venv-salt-minion/minion.d"
+SALT_MINION_SERVICE="venv-salt-minion"
+if [ ! -d "$SALT_MINION_CONF_DIR" ]; then
+  SALT_MINION_CONF_DIR="/etc/salt/minion.d"
+  SALT_MINION_SERVICE="salt-minion"
+fi
+cat <<EOF >"$SALT_MINION_CONF_DIR/susemanager.conf"
 master: $redhat_management_server
 server_id_use_crc: adler32
 enable_legacy_startup_events: False
@@ -494,18 +497,18 @@ EOF
 #end if
 
 #if $activation_keys or $management_key
-cat <<EOF >>"/etc/salt/minion.d/susemanager.conf"
+cat <<EOF >>"$SALT_MINION_CONF_DIR/susemanager.conf"
 grains:
     susemanager:
 EOF
 #end if
 #if $management_key
-cat <<EOF >>"/etc/salt/minion.d/susemanager.conf"
+cat <<EOF >>"$SALT_MINION_CONF_DIR/susemanager.conf"
         management_key: "$management_key"
 EOF
 #end if
 #if $activation_keys
-cat <<EOF >>"/etc/salt/minion.d/susemanager.conf"
+cat <<EOF >>"$SALT_MINION_CONF_DIR/susemanager.conf"
         activation_key: "$activation_keys"
 EOF
 #end if
@@ -513,8 +516,8 @@ EOF
 #if not $varExists('dont_register')
 # if you don't want to register, set the 'dont_register' variable
 
-systemctl restart salt-minion
-systemctl enable salt-minion
+systemctl restart "$SALT_MINION_SERVICE"
+systemctl enable "$SALT_MINION_SERVICE"
 #end if
 
 #if not $varExists('dont_disable_automatic_onlineupdate')
@@ -536,14 +539,16 @@ zypper mr -d --all
 zypper mr -e --medium-type plugin
 rm -rf /etc/zypp/repos.d/http* > /tmp/removed-at-init
 #end if
+
 # Clean up the SUMA reinstallation boot entry
 rm -rf /etc/grub.d/42_uyuni_reinstall
 rm -rf /boot/uyuni-reinstall-kernel /boot/uyuni-reinstall-initrd
 /usr/sbin/grub2-mkconfig -o /boot/grub2/grub.cfg
 # end reinstallation cleanup
-systemctl stop salt-minion
+
+systemctl stop "$SALT_MINION_SERVICE"
 sleep 10
-systemctl start salt-minion
+systemctl start "$SALT_MINION_SERVICE"
         ]]>
     </source>
   </script>
