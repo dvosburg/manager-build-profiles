@@ -18,6 +18,7 @@ Set variables in the following files - examples proivided:
   * `REGISTRATION_KEY=1-slemicro53`
   * `SALT_MINION_CONF_DIR="/etc/venv-salt-minion/minion.d"`
   * `SALT_MINION_SERVICE="venv-salt-minion"`
+  * `SALT_MINION_DIR="venv-salt-minion"`
   * `SALT_MINION_DIR="/etc/venv-salt-minion"'
 
 
