@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Profile updated by dvosburg at suse dot com 20220901 - SLE Micro 5.3 with salt bundle -->
+<!DOCTYPE profile>
+<profile xmlns="http://www.suse.com/1.0/yast2ns" xmlns:config="http://www.suse.com/1.0/configns">
+  <add-on>
+    <add_on_products config:type="list">
+     <listentry>
+        <media_url>http://$redhat_management_server/ks/dist/child/sle-micro-5.3-updates-x86_64/$distrotree</media_url>
+        <product>SLE-Micro</product>
+        <name>SLE-Micro-5.3-Updates</name>
+        <alias>SLE-Micro-5.3-Updates</alias>
+        <priority config:type="integer">99</priority>
+        <product_dir/>
+      </listentry>
+      <listentry>
+        <media_url>http://$redhat_management_server/ks/dist/child/sle-manager-tools15-pool-x86_64-micro-5.3/$distrotree</media_url>
+        <product>SLE-Micro-SUSE-Manager-Tools-5.3-Pools</product>
+        <name>SLE-Micro-SUSE-Manager-Tools-5.3-Updates</name>
+        <alias>SLE-Micro-SUSE-Manager-Tools-5.3-Updates</alias>
+        <priority config:type="integer">99</priority>
+        <product_dir/>
+      </listentry>
+      <listentry>
+        <media_url>http://$redhat_management_server/ks/dist/child/sle-manager-tools15-updates-x86_64-micro-5.3/$distrotree</media_url>
+        <product>SLE-Micro-SUSE-Manager-Tools-5.3-Updates</product>
+        <name>SLE-Micro-SUSE-Manager-Tools-5.3-Updates</name>
+        <alias>SLE-Micro-SUSE-Manager-Tools-5.3-Updates</alias>
+        <priority config:type="integer">99</priority>
+        <product_dir/>
+      </listentry>
+    </add_on_products>
+  </add-on>
+
+  <bootloader>
+    <global>
+      <timeout config:type="integer">5</timeout>
+      <hiddenmenu>false</hiddenmenu>
+    </global>
+  </bootloader>
+
+  <general>
+    <self_update config:type="boolean">false</self_update>
+    <mode>
+      <second_stage config:type="boolean">false</second_stage>
+      <confirm config:type="boolean">false</confirm>
+    </mode>
+    <signature-handling>
+      <accept_file_without_checksum config:type="boolean">true</accept_file_without_checksum>
+      <accept_non_trusted_gpg_key config:type="boolean">true</accept_non_trusted_gpg_key>
+      <accept_unknown_gpg_key config:type="boolean">true</accept_unknown_gpg_key>
+      <accept_unsigned_file config:type="boolean">true</accept_unsigned_file>
+      <accept_verification_failed config:type="boolean">true</accept_verification_failed>
+      <import_gpg_key config:type="boolean">true</import_gpg_key>
+    </signature-handling>
+  </general>
+
+  <partitioning config:type="list">
+    <drive>
+      <device>/dev/vda</device>
+      <disklabel>gpt</disklabel>
+      <enable_snapshots config:type="boolean">true</enable_snapshots>
+      <initialize config:type="boolean">false</initialize>
+      <partitions config:type="list">
+        <partition>
+          <create config:type="boolean">true</create>
+          <filesystem config:type="symbol">vfat</filesystem>
+          <format config:type="boolean">true</format>
+          <mount>/boot/efi</mount>
+          <mountby config:type="symbol">uuid</mountby>
+          <partition_id config:type="integer">259</partition_id>
+          <partition_nr config:type="integer">1</partition_nr>
+          <resize config:type="boolean">false</resize>
+          <size>524288000</size>
+        </partition>
+        <partition>
+          <create config:type="boolean">true</create>
+          <create_subvolumes config:type="boolean">true</create_subvolumes>
+          <filesystem config:type="symbol">btrfs</filesystem>
+          <format config:type="boolean">true</format>
+          <mount>/</mount>
+          <mountby config:type="symbol">uuid</mountby>
+          <partition_id config:type="integer">131</partition_id>
+          <partition_nr config:type="integer">2</partition_nr>
+          <resize config:type="boolean">false</resize>
+          <size>15G</size>
+          <subvolumes config:type="list">
+            <subvolume>
+              <copy_on_write config:type="boolean">true</copy_on_write>
+              <path>opt</path>
+            </subvolume>
+            <subvolume>
+              <copy_on_write config:type="boolean">true</copy_on_write>
+              <path>home</path>
+            </subvolume>
+            <subvolume>
+              <copy_on_write config:type="boolean">true</copy_on_write>
+              <path>root</path>
+            </subvolume>
+            <subvolume>
+              <copy_on_write config:type="boolean">true</copy_on_write>
+              <path>usr/local</path>
+            </subvolume>
+            <subvolume>
+              <copy_on_write config:type="boolean">false</copy_on_write>
+              <path>var</path>
+            </subvolume>
+            <subvolume>
+              <copy_on_write config:type="boolean">true</copy_on_write>
+              <path>boot/grub2/i386-pc</path>
+            </subvolume>
+            <subvolume>
+              <copy_on_write config:type="boolean">true</copy_on_write>
+              <path>boot/grub2/x86_64-efi</path>
+            </subvolume>
+            <subvolume>
+              <copy_on_write config:type="boolean">true</copy_on_write>
+              <path>srv</path>
+            </subvolume>
+          </subvolumes>
+          <subvolumes_prefix><![CDATA[@]]></subvolumes_prefix>
+        </partition>
+        <partition>
+          <create config:type="boolean">true</create>
+          <filesystem config:type="symbol">xfs</filesystem>
+          <format config:type="boolean">true</format>
+          <mount>/var</mount>
+          <mountby config:type="symbol">uuid</mountby>
+          <partition_id config:type="integer">131</partition_id>
+          <partition_nr config:type="integer">3</partition_nr>
+          <resize config:type="boolean">false</resize>
+          <size>5G</size>
+        </partition>
+        <partition>
+          <create config:type="boolean">true</create>
+          <filesystem config:type="symbol">xfs</filesystem>
+          <format config:type="boolean">true</format>
+          <mount>/tmp</mount>
+          <mountby config:type="symbol">uuid</mountby>
+          <partition_id config:type="integer">131</partition_id>
+          <partition_nr config:type="integer">3</partition_nr>
+          <resize config:type="boolean">false</resize>
+          <size>3G</size>
+        </partition>
+      </partitions>
+      <type config:type="symbol">CT_DISK</type>
+      <use>all</use>
+   </drive>
+  </partitioning>
+
+   <software>
+    <products config:type="list">
+      <product>SLE-Micro</product>
+    </products>
+    <install_recommended config:type="boolean">true</install_recommended>
+    <packages config:type="list">
+      <package>grub2</package>
+      <package>open-iscsi</package>
+      <package>NetworkManager</package>
+      <package>dmidecode</package>
+      <package>patterns-microos-sssd_ldap</package>
+      <package>python3-pycurl</package>
+      <package>python3-simplejson</package>
+      <package>venv-salt-minion</package>
+    </packages>
+    <patterns config:type="list">
+      <pattern>basesystem</pattern>
+      <pattern>microos-container_runtime</pattern>
+      <pattern>microos-selinux</pattern>
+    </patterns>
+  </software>
+
+  <users config:type="list">
+    <user>
+      <authorized_keys config:type="list"/>
+      <encrypted config:type="boolean">true</encrypted>
+      <fullname>root</fullname>
+      <gid>0</gid>
+      <home>/root</home>
+      <home_btrfs_subvolume config:type="boolean">false</home_btrfs_subvolume>
+      <password_settings>
+        <expire/>
+        <flag/>
+        <inact/>
+        <max/>
+        <min/>
+        <warn/>
+      </password_settings>
+      <shell>/bin/bash</shell>
+      <uid>0</uid>
+      <user_password>$6$1EWKyvi9uDP9oPFA$Zw4l3JEnjfzZ5JDWkfDr/ZBE5rzNMPkvkW0A3MHyERG6hw.V7sdZcDwNBnEOlgKEcYbgKsJRoIkstCQMItVK.0</user_password>
+      <username>root</username>
+    </user>
+  </users>
+  <keyboard>
+    <keymap>us</keymap>
+  </keyboard>
+  <language>
+    <language>en_US</language>
+  </language>
+
+  <networking>
+    <keep_install_network config:type="boolean">true</keep_install_network>
+    <backend>network_manager</backend>
+  </networking>
+
+
+ <kdump>
+  <add_crash_kernel config:type="boolean">false</add_crash_kernel>
+</kdump>
+
+<scripts>
+ <chroot-scripts config:type="list">
+  <script>
+   <filename>install_script</filename>
+   <source>
+<![CDATA[
+#!/bin/bash
+
+curl -skS http://$redhat_management_server/pub/bootstrap/install-script-53.sh | bash
+
+
+]]>
+   </source>
+  </script>
+ </chroot-scripts>
+</scripts>
+</profile>
