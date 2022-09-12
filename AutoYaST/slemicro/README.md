@@ -33,7 +33,7 @@ For all installations, the `$redhat_management_server` variable will be set auto
 These examples use the `$distrotree` variable, which must be defined as the distribution label used with this profile.
 Set the variable to the same value that you selected in `Autoinstall Tree` in the `Details` tab.
 
-Example:
+Example here:
 
 ```
 distrotree=sles_sap15sp2-x86_64
