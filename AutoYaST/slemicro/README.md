@@ -6,6 +6,31 @@ Unlike other AutoYast profiles, the custom scripting feature is greatly changed.
 
 Since init-scripts are not used with SLE Micro, it uses an '/etc/init.d/after.local' script to complete the salt minion setup.  Examples of each are included here.
 
+## SLE Micro profiles
+
+* SLE Micro 5.0
+  * https://github.com/SUSE/manager-build-profiles#master:OSImage/SUSE-MicroOS50
+
+* SLE Micro 5.1
+  * https://github.com/SUSE/manager-build-profiles#master:OSImage/SUSE-MicroOS51
+
+SLE Micro profiles must be built on SLE15 buildhost with activation key with corresponding channels.
+When creating OS Image profile in SUMA, it is necessary to specify Kiwi option `--profile <profile>`.
+This requires SUSE Manager 4.2.2 or newer.
+
+Available Kiwi profiles:
+
+* SLE Micro 5.0
+  * `Default`
+  * `Default-RT`
+
+* SLE Micro 5.1
+  * `Default`
+  * `Default-RT`
+  * `Default-kvm`
+  * `Default-dasd`
+  * `Default-fba`
+
 ## Variables in after.local and install-script.sh
 
 Specify the following variable in the install-script.sh file:
