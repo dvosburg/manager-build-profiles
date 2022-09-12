@@ -216,7 +216,7 @@
 <![CDATA[
 #!/bin/bash
 
-curl -skS http://$redhat_management_server/pub/bootstrap/install-script-53.sh | bash
+curl -skS http://$redhat_management_server/pub/bootstrap/install-script.sh | bash
 
 
 ]]>
