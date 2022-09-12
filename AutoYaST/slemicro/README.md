@@ -14,7 +14,7 @@ Set variables in the following files - examples proivided:
   * `SM_SERVER_IP=10.173.1.48`
 
 * after.local
-  * `SM_SERVER=suma4external.site.com'
+  * `SM_SERVER=suma4external.site.com`
   * `REGISTRATION_KEY=1-slemicro53`
   * `SALT_MINION_CONF_DIR="/etc/venv-salt-minion/minion.d"`
   * `SALT_MINION_SERVICE="venv-salt-minion"`
