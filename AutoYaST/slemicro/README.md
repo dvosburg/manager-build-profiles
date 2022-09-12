@@ -9,15 +9,17 @@ Since init-scripts are not used with SLE Micro, it uses an '/etc/init.d/after.lo
 ## Variables in after.local and install-script.sh
 
 Specify the following variable in the install-script.sh file:
+---
 SM_SERVER_IP
-
+---
 Specify these variables in the after.local file
+---
 SM_SERVER=suma4external.site.com
 REGISTRATION_KEY=1-slemicro53
 SALT_MINION_CONF_DIR="/etc/venv-salt-minion/minion.d"
 SALT_MINION_SERVICE="venv-salt-minion"
 SALT_MINION_DIR="/etc/venv-salt-minion"
-
+---
 ## Variables used in the autoinstallation profile
 When the uploaded profile requires variables to be set, navigate to `Systems > Autoinstallation > Profiles`, select the profile to edit, and navigate to the `Variables` tab.
 Specify the required variables, using this format:
