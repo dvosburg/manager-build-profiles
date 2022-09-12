@@ -37,9 +37,9 @@ Set the variable to the same value that you selected in `Autoinstall Tree` in th
 Example here:
 
 ```
-distrotree=sles_sap15sp2-x86_64
+distrotree=slemicro_53
 ```
 
-when the distribution label is `sles_sap15sp2-x86_64`.
+when the distribution label is `slemicro_53`.
 
 To report a bug or request a change, please use [Bugzilla](https://bugzilla.suse.com) or open a GitHub issue.
