@@ -18,8 +18,8 @@ Set variables in the following files - examples proivided:
   * `REGISTRATION_KEY=1-slemicro53`
   * `SALT_MINION_CONF_DIR="/etc/venv-salt-minion/minion.d"`
   * `SALT_MINION_SERVICE="venv-salt-minion"`
-  * `SALT_MINION_DIR="/etc/venv-salt-minion"
-* `SALT_MINION_DIR="/etc/venv-salt-minion"
+  * `SALT_MINION_DIR="/etc/venv-salt-minion"'
+
 
 ## Variables used in the autoinstallation profile
 When the uploaded profile requires variables to be set, navigate to `Systems > Autoinstallation > Profiles`, select the profile to edit, and navigate to the `Variables` tab.
