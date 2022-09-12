@@ -6,7 +6,7 @@ Unlike other AutoYast profiles, the custom scripting feature is greatly changed.
 
 Since init-scripts are not used with SLE Micro, it uses an '/etc/init.d/after.local' script to complete the salt minion setup.  Examples of each are included here.
 
-##Variables in after.local and install-script.sh
+## Variables in after.local and install-script.sh
 
 Specify the following variable in the install-script.sh file:
 SM_SERVER_IP
@@ -18,7 +18,7 @@ SALT_MINION_CONF_DIR="/etc/venv-salt-minion/minion.d"
 SALT_MINION_SERVICE="venv-salt-minion"
 SALT_MINION_DIR="/etc/venv-salt-minion"
 
-##Variables used in the autoinstallation profile
+## Variables used in the autoinstallation profile
 When the uploaded profile requires variables to be set, navigate to `Systems > Autoinstallation > Profiles`, select the profile to edit, and navigate to the `Variables` tab.
 Specify the required variables, using this format:
 
