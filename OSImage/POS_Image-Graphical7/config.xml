@@ -4,7 +4,7 @@
     <description type="system">
         <author>dvosburg</author>
         <contact>dvosburg@suse.com</contact>
-        <specification>SUSE Linux Enterprise 15 SP3 Graphical Image</specification>
+        <specification>SUSE Linux Enterprise POS 15 SP3 Graphical Image</specification>
     </description>
     <preferences>
 	<version>7.0.11</version>
