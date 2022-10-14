@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<image schemaversion="6.1" name="POS_Image_Graphical7">
+<image schemaversion="6.1" name="slepos-15sp4-graphical">
     <description type="system">
         <author>dvosburg</author>
         <contact>dvosburg@suse.com</contact>
         <specification>SUSE Linux Enterprise POS 15 SP3 Graphical Image</specification>
     </description>
     <preferences>
-	<version>7.0.11</version>
+	<version>7.0.20</version>
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>SLE</bootsplash-theme>
         <bootloader-theme>SLE</bootloader-theme>
