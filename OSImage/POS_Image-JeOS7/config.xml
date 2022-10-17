@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<image schemaversion="6.1" name="POS_Image_JeOS7">
+<image schemaversion="6.1" name="POS_Image_JeOS7-dpv">
     <description type="system">
         <author>Admin User</author>
         <contact>noemail@example.com</contact>
-        <specification>SUSE Linux Enterprise 15 SP2 JeOS</specification>
+        <specification>SUSE Linux Enterprise 15 SP4 JeOS</specification>
     </description>
     <preferences>
-        <version>7.0.0</version>
+        <version>7.1.0</version>
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>SLE</bootsplash-theme>
         <bootloader-theme>SLE</bootloader-theme>
