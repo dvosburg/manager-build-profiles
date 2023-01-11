@@ -126,7 +126,7 @@
         <package name="branding-SLE"/>
         <package name="gio-branding-SLE"/>
         <package name="MozillaFirefox-branding-SLE"/>
-        <package name="gnome-shell-classic"/>
+        <package name="gnome-shell"/>
 
         <!-- Fonts -->
 	<package name="patterns-fonts-fonts"/>  
