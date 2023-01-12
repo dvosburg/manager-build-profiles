@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<image schemaversion="6.1" name="slepos15sp4-jeos">
+<image schemaversion="6.1" name="slepos-15sp4-jeos">
     <description type="system">
         <author>dvosburg</author>
         <contact>dvosburg@suse.com</contact>
