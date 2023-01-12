@@ -4,10 +4,10 @@
     <description type="system">
         <author>Admin User</author>
         <contact>noemail@example.com</contact>
-        <specification>SUSE Linux Enterprise 15 SP2 JeOS</specification>
+        <specification>SUSE Linux Enterprise 15 SP4 JeOS</specification>
     </description>
     <preferences>
-        <version>7.0.0</version>
+        <version>7.0.1</version>
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>SLE</bootsplash-theme>
         <bootloader-theme>SLE</bootloader-theme>
@@ -19,6 +19,16 @@
 
         <rpm-excludedocs>true</rpm-excludedocs>
         <type filesystem="ext3" image="pxe" initrd_system="dracut"></type>
+	<users>
+          <user
+            password="$1$xyz$YACkVSgLQHtAXVTV.wIyR/"
+            home="/home/guest" name="guest" groups="users"
+          />
+          <user
+            password="$1$xyz$..z0J0HuUZ73rVznp2H.s/"
+            home="/root" name="root" groups="root"
+          />
+         </users>
     </preferences>
 
     <packages type="image">
