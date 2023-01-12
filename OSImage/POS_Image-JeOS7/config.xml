@@ -2,8 +2,8 @@
 
 <image schemaversion="6.1" name="slepos15sp4-jeos">
     <description type="system">
-        <author>Admin User</author>
-        <contact>noemail@example.com</contact>
+        <author>dvosburg</author>
+        <contact>dvosburg@suse.com</contact>
         <specification>SUSE Linux Enterprise 15 SP4 JeOS</specification>
     </description>
     <preferences>
@@ -14,7 +14,7 @@
 
         <locale>en_US</locale>
         <keytable>us.map.gz</keytable>
-        <timezone>Europe/Berlin</timezone>
+        <timezone>America/New_York</timezone>
         <hwclock>utc</hwclock>
 
         <rpm-excludedocs>true</rpm-excludedocs>
