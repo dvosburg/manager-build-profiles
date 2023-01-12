@@ -14,7 +14,7 @@ When using this repository as a source, do not forget to add a valid sub directo
 
 * SLE15 templates
   * POS_Image-JeOS7 -> https://github.com/SUSE/manager-build-profiles#master:OSImage/POS_Image-JeOS7
-  * POS_Image-Graphical7 -> https://github.com/SUSE/manager-build-profiles#master:OSImage/POS_Image-Graphical7
+  * POS_Image-Graphical7 -> https://github.com/dvosburg/manager-build-profiles#retail-demo-22:OSImage/POS_Image-Graphical7
 
 
 Make sure build hosts use the same base OS version as the templates you are trying to build. SLE11 templates are meant to be build on SLE11 build hosts, SLE12 templates on SLE12 build hosts.
