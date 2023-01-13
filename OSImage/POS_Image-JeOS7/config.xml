@@ -7,7 +7,7 @@
         <specification>SUSE Linux Enterprise 15 SP3 JeOS</specification>
     </description>
     <preferences>
-        <version>2023.0.1</version>
+        <version>2023.1.1</version>
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>SLE</bootsplash-theme>
         <bootloader-theme>SLE</bootloader-theme>
