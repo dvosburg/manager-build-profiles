@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<image schemaversion="6.1" name="slepos-15sp4-jeos">
+<image schemaversion="6.1" name="slepos-15-jeos">
     <description type="system">
         <author>dvosburg</author>
         <contact>dvosburg@suse.com</contact>
-        <specification>SUSE Linux Enterprise 15 SP4 JeOS</specification>
+        <specification>SUSE Linux Enterprise 15 SP3 JeOS</specification>
     </description>
     <preferences>
         <version>2023.0.1</version>
