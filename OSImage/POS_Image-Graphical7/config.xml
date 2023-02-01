@@ -62,6 +62,7 @@
         <package name="iproute2"/> 
         <package name="openssh"/>
         <package name="rsync"/>
+	<package name="yast2-firstboot"/>
 
         <!-- Only for btrfs
         <package name="btrfsprogs"/>
