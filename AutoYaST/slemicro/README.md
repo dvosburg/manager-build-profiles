@@ -2,9 +2,11 @@
 
 This directory contains profiles for AutoYaST on SLE Micro and can be used with SUSE Manager's autoinstallation feature.
 
-Unlike other AutoYast profiles, the custom scripting feature is greatly changed.  Only a 'chroot-script' is employed, that employs curl to invoke an 'install-script.sh' from the SUSE Manager server.
+Unlike other AutoYast profiles, the custom scripting feature is greatly changed.  Only a 'chroot-script' is employed, that uses curl to copy the 'install-script.sh' from the SUSE Manager server.
 
-Since init-scripts are not used with SLE Micro, it uses an '/etc/init.d/after.local' script to complete the salt minion setup.  Examples of each are included here.
+Please edit the 'install-script.sh' with the IP/FQDN of your SUMA server.  An example is included here.
+
+Since init-scripts are not used with SLE Micro, it uses an '/etc/init.d/after.local' script to complete the salt minion setup.  Copy this script to your SUMA server to /srv/www/htdocs/pub/bootstrap. Example included here.
 
 ## Variables in after.local and install-script.sh
 
