@@ -1,21 +1,24 @@
 <?xml version="1.0"?>
 <!DOCTYPE profile>
+<!-- Profile updated by dvosburg at suse dot com 20230802 - SLES15 SP4 from scratch with salt bundle -->
 <profile xmlns="http://www.suse.com/1.0/yast2ns" xmlns:config="http://www.suse.com/1.0/configns">
   <add-on>
     <add_on_products config:type="list">
-      <listentry>
-           <ask_on_error config:type="boolean">true</ask_on_error>
-           <media_url>http://$redhat_management_server/ks/dist/child/sle-manager-tools15-beta-pool-$arch-sp4/$distrotree</media_url>
-           <name>SLE-Manager-Tools15-Pool for $arch</name>
-           <product>sle-manager-tools</product>
+        <listentry>
+          <ask_on_error config:type="boolean">true</ask_on_error>
+          <media_url>http://$redhat_management_server/ks/dist/child/sle-manager-tools15-pool-x86_64-sp4/$distrotree</media_url>
+          <name>susemanager tools pool</name>
+          <product>SM Tools</product>
+          <product_dir>/</product_dir>
         </listentry>
-	    <listentry>
-           <ask_on_error config:type="boolean">true</ask_on_error>
-           <media_url>http://$redhat_management_server/ks/dist/child/sle-manager-tools15-beta-updates-x86_64-sp4/$distrotree</media_url>
-           <name>SLE-Manager-Tools15-BETA-Updates for $arch</name>
-           <product>sle-manager-tools</product>
+        <listentry>
+          <ask_on_error config:type="boolean">true</ask_on_error>
+          <media_url>http://$redhat_management_server/ks/dist/child/sle-manager-tools15-updates-x86_64-sp4/$distrotree</media_url>
+          <name>susemanager tools updates</name>
+          <product>SM Tools</product>
+          <product_dir>/</product_dir>
         </listentry>
-         <listentry>
+        <listentry>
            <ask_on_error config:type="boolean">true</ask_on_error>
            <media_url>http://$redhat_management_server/ks/dist/child/sle-module-basesystem15-sp4-pool-$arch/$distrotree</media_url>
            <name>SLE-Module-Basesystem15-sp4-Pool for $arch</name>
@@ -180,13 +183,14 @@
       <listentry>SLES</listentry>
     </products>
   </software>
-
-  <users config:type="list">
+<users config:type="list">
     <user>
-      <encrypted config:type="boolean">false</encrypted>
+      <authorized_keys config:type="list"/>
+      <encrypted config:type="boolean">true</encrypted>
       <fullname>root</fullname>
       <gid>0</gid>
       <home>/root</home>
+      <home_btrfs_subvolume config:type="boolean">false</home_btrfs_subvolume>
       <password_settings>
         <expire/>
         <flag/>
@@ -197,7 +201,7 @@
       </password_settings>
       <shell>/bin/bash</shell>
       <uid>0</uid>
-      <user_password>'$1$xyz$..z0J0HuUZ73rVznp2H.s/'</user_password>
+      <user_password>$6$1EWKyvi9uDP9oPFA$Zw4l3JEnjfzZ5JDWkfDr/ZBE5rzNMPkvkW0A3MHyERG6hw.V7sdZcDwNBnEOlgKEcYbgKsJRoIkstCQMItVK.0</user_password>
       <username>root</username>
     </user>
   </users>
