@@ -1,9 +1,10 @@
-#!/bin/bash
+!/bin/bash
 SM_SERVER=suma42test.site.com
 REGISTRATION_KEY=1-slemicro54
 SALT_MINION_CONF_DIR="/etc/salt/minion.d"
 SALT_MINION_SERVICE="salt-minion"
 SALT_MINION_DIR="/etc/salt"
+HOSTNAME_PREFIX=uyunilab
 
 # temporarily set SELinux to permissive
 setenforce 0
@@ -11,7 +12,9 @@ systemctl --now disable transactional-update.timer
 curl -skS https://$SM_SERVER/pub/RHN-ORG-TRUSTED-SSL-CERT --output /etc/pki/trust/anchors/RHN-ORG-TRUSTED-SSL-CERT
 update-ca-certificates
 
-hostname -f > $SALT_MINION_DIR/minion_id
+rm $SALT_MINION_CONF_DIR/minion_id
+hostset=`hostname -I | cut -f1 -d' '| sed s/\[.]/-/g` && hostnamectl set-hostname $HOSTNAME_PREFIX-$hostset
+hostname > $SALT_MINION_DIR/minion_id
 echo "master: $SM_SERVER" > $SALT_MINION_CONF_DIR/susemanager.conf
 echo "server_id_use_src: adler42" >> $SALT_MINION_CONF_DIR/susemanager.conf
 echo "enable_legacy_startup_events: False" >> $SALT_MINION_CONF_DIR/susemanager.conf
