@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE profile>
-<!-- Profile updated by dvosburg at suse dot com 20230804 - SLES15 SP4 from scratch with salt bundle
+<!-- Profile updated by dvosburg at suse dot com 20231024 - SLES15 SP4 from scratch with salt bundle setting hostname
 It assumes system variables plus these entered on the variables tab:
 org='organization_id'
 distrotree='autoinstallation_distribution_label'
 channel_prefix='clm_channel_prefix' or blank for SCC channels
 registration_key='activation_key_for_post_upgrade'
+hostname_prefix=sumatest   # Choose a hostname prefix for registered hostnames
 -->
 <profile xmlns="http://www.suse.com/1.0/yast2ns" xmlns:config="http://www.suse.com/1.0/configns">
   <add-on>
@@ -442,6 +443,14 @@ mv RHN-ORG-TRUSTED-SSL-CERT /mnt/etc/pki/trust/anchors/
     <filename>uyuni-minion.sh</filename>
     <source>
         <![CDATA[
+# Set variables for venv-salt-minion and define hostname and minionID
+SALT_MINION_CONF_DIR="/etc/venv-salt-minion/minion.d"
+SALT_MINION_SERVICE="venv-salt-minion"
+SALT_MINION_DIR="/etc/venv-salt-minion"
+rm $SALT_MINION_CONF_DIR/minion_id
+hostset=`hostname -I | cut -f1 -d' '| sed s/\[.]/-/g` && hostnamectl set-hostname $hostname_prefix-$hostset
+hostname > $SALT_MINION_DIR/minion_id
+	    
 cat <<EOF >"/etc/venv-salt-minion/minion.d/susemanager.conf"
 master: $redhat_management_server
 server_id_use_crc: adler32
