@@ -1,0 +1,36 @@
+#!/bin/bash
+# Edit these variables as required
+SM_SERVER=suma42test.site.com
+REGISTRATION_KEY=1-slemicro55
+SALT_MINION_CONF_DIR="/etc/salt/minion.d"
+SALT_MINION_SERVICE="salt-minion"
+SALT_MINION_DIR="/etc/salt"
+HOSTNAME_PREFIX=uyunilab
+
+# temporarily set SELinux to permissive
+setenforce 0
+systemctl --now disable transactional-update.timer
+curl -skS https://$SM_SERVER/pub/RHN-ORG-TRUSTED-SSL-CERT --output /etc/pki/trust/anchors/RHN-ORG-TRUSTED-SSL-CERT
+update-ca-certificates
+
+rm $SALT_MINION_CONF_DIR/minion_id
+hostset=`hostname -I | cut -f1 -d' '| sed s/\[.]/-/g` && hostnamectl set-hostname $HOSTNAME_PREFIX-$hostset
+hostname > $SALT_MINION_DIR/minion_id
+echo "master: $SM_SERVER" > $SALT_MINION_CONF_DIR/susemanager.conf
+echo "server_id_use_src: adler42" >> $SALT_MINION_CONF_DIR/susemanager.conf
+echo "enable_legacy_startup_events: False" >> $SALT_MINION_CONF_DIR/susemanager.conf
+echo "enable_fqdns_grains: False" >> $SALT_MINION_CONF_DIR/susemanager.conf
+echo "grains:" >> $SALT_MINION_CONF_DIR/susemanager.conf
+echo "  susemanager:" >> $SALT_MINION_CONF_DIR/susemanager.conf
+echo "    activation_key: $REGISTRATION_KEY" >> $SALT_MINION_CONF_DIR/susemanager.conf
+# build the beacons file
+echo "beacons:" > $SALT_MINION_CONF_DIR/beacons.conf
+echo "  reboot_info:" >> $SALT_MINION_CONF_DIR/beacons.conf
+echo "    interval: 10" >> $SALT_MINION_CONF_DIR/beacons.conf
+# mv $SALT_MINION_CONF_DIR/transactional_update.conf /root
+# touch $SALT_MINION_CONF_DIR/transactional_update.conf
+systemctl enable --now $SALT_MINION_SERVICE
+sleep 90
+touch /root/finishinstall
+chmod -x /etc/init.d/after.local
+init 6
