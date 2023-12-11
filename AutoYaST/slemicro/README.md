@@ -12,7 +12,7 @@ Since init-scripts are not used with SLE Micro, it uses an '/etc/init.d/after.lo
 
 Set variables in the following files - examples proivided:
 
-* install-scrpt.sh
+* install-script.sh
   * `SM_SERVER_IP=10.173.1.48`
 
 * after.local
