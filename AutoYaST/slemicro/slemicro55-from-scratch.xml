@@ -135,10 +135,11 @@ It also assumes you will edit and make avaialable an install-scrpit-55.sh script
    </drive>
   </partitioning>
 
-<!--  Added to set SELINUX to permissive for venv-salt-minion --> 
- <security>
-  <selinux_mode>permissive</selinux_mode>
- </security>
+<!--  Added security section to set SELINUX to permissive for venv-salt-minion.
+--> 
+   <security>
+     <selinux_mode>permissive</selinux_mode>
+   </security>
 
    <software>
     <products config:type="list">
