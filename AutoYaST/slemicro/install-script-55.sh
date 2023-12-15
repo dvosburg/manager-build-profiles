@@ -7,6 +7,7 @@ curl -skS https://$SM_SERVER/pub/RHN-ORG-TRUSTED-SSL-CERT --output /etc/pki/trus
 update-ca-certificates
 rm /mnt/etc/zypp/repos.d/*
 
-#Create after.local
-curl -skS https://$SM_SERVER/pub/bootstrap/after.local.54 --output /mnt/etc/init.d/after.local
-chmod +x /mnt/etc/init.d/after.local
+#Create boot script and service 
+curl -skS https://$SM_SERVER_IP/pub/bootstrap/boot_script.sh --output /mnt/usr/local/bin/boot_script.sh
+curl -skS https://$SM_SERVER_IP/pub/bootstrap/run-before-login-prompt.service --output /mnt/etc/systemd/system/run-before-login-prompt.service
+chmod +x /mnt/usr/local/bin/boot_script.sh
