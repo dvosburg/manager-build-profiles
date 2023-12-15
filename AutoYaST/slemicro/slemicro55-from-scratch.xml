@@ -3,7 +3,7 @@
 It assumes system variables plus these entered on the variables tab:
 org='organization_id'
 distrotree='autoinstallation_distribution_label'
-It also assumes you will edit and make avaialable an install-scrpit-55.sh script and after.local file to be used during initial boot.
+It also assumes you will edit and make avaialable an install-script-55.sh script, run-before-login-prompt.service, and boot_script.sh files to be used during initial boot.
 -->
 <!DOCTYPE profile>
 <profile xmlns="http://www.suse.com/1.0/yast2ns" xmlns:config="http://www.suse.com/1.0/configns">
