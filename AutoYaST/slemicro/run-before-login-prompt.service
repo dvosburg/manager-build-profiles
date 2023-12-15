@@ -1,0 +1,13 @@
+[Unit]
+Description=Run script with systemd right before login prompt
+After=systemd-user-sessions.service
+Before=getty.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/bin/boot_script.sh
+
+[Install]
+WantedBy=multi-user.target
+
