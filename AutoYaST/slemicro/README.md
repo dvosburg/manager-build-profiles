@@ -5,17 +5,19 @@ This directory contains profiles for AutoYaST on SLE Micro and can be used with 
 Unlike other AutoYast profiles, the custom scripting feature is greatly changed.  Only a 'chroot-script' is employed, that uses curl to copy the 'install-script.sh' from the SUSE Manager server.
 
 Please edit the 'install-script.sh' with the IP/FQDN of your SUMA server.  An example is included here.
+## after.local or systemd scripts
+Since init-scripts are not used with SLE Micro, it can use an '/etc/init.d/after.local' script to complete the salt minion setup.  Copy the example 'after.local'  to your SUMA server in /srv/www/htdocs/pub/bootstrap/, and edit as needed.  Variables are at the top.
 
-Since init-scripts are not used with SLE Micro, it uses an '/etc/init.d/after.local' script to complete the salt minion setup.  Copy the example 'after.local'  to your SUMA server in /srv/www/htdocs/pub/bootstrap/, and edit as needed.  Variables are at the top.
+A more modern way is to use systemd - and some templates are used here in the install-script-55.sh file.  It installs a 'run-before-login-prompt.service file in /etc/systemd/system, and references a 'boot_script.sh' file placed in '/usr/local/bin'.  
 
-## Variables in after.local and install-script.sh
+## Variables in after.local/systemd and install-script.sh
 
 Set variables in the following files - examples proivided:
 
 * install-script.sh
   * `SM_SERVER_IP=10.173.1.48`
 
-* after.local
+* after.local/boot_script.sh
   * `SM_SERVER=suma4external.site.com`
   * `REGISTRATION_KEY=1-slemicro53`
   * `SALT_MINION_CONF_DIR="/etc/venv-salt-minion/minion.d"`
