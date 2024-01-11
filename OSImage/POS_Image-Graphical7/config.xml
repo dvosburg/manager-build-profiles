@@ -7,7 +7,7 @@
         <specification>SUSE Linux Enterprise 15 SP3 Graphical Image</specification>
     </description>
     <preferences>
-	<version>7.0.24</version>
+	<version>7.0.25</version>
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>SLE</bootsplash-theme>
         <bootloader-theme>SLE</bootloader-theme>
@@ -22,8 +22,8 @@
     </preferences>
       <users>
         <user
-            password="$1$xyz$dCB0XV.AZGZOsJNJwnQVi0"
-            home="/home/guest" name="guest" groups="users"
+            password="$1$xyz$qpVralGd61w4xMUHFSC9b/"
+            home="/home/retail" name="retail" groups="users"
         />
         <user
             password="$1$xyz$..z0J0HuUZ73rVznp2H.s/"
