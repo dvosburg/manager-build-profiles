@@ -1,0 +1,27 @@
+[Desktop Entry]
+Categories=Network;WebBrowser;GTK;
+Encoding=UTF-8
+Name=Firefox
+GenericName=Web Browser
+Comment=Web Browser
+TryExec=firefox
+Exec=firefox --new-window https://nrfbigshow.nrf.com/
+Icon=firefox
+Terminal=false
+StartupNotify=true
+MimeType=text/html;text/xml;application/xhtml+xml;application/vnd.mozilla.xul+xml;text/mml;application/x-xpinstall;x-scheme-handler/http;x-scheme-handler/https;
+Type=Application
+
+Actions=new-window;PrivateBrowsing;ProfileManager
+
+[Desktop Action new-window]
+Name=New Window
+Exec=firefox --new-window %u
+
+[Desktop Action PrivateBrowsing]
+Name=New Private Browsing Window
+Exec=firefox --private-window %u
+
+[Desktop Action ProfileManager]
+Name=Profile Manager
+Exec=firefox --ProfileManager
