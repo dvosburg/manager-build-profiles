@@ -1,4 +1,4 @@
-## Path:        Desktop/Display manager
+ail## Path:        Desktop/Display manager
 ## Description: settings to generate a proper displaymanager config
 ## Type:        string(kdm,xdm,gdm,wdm,console)
 ## Default:     ""
@@ -31,5 +31,5 @@ DISPLAYMANAGER_ROOT_LOGIN_REMOTE="no"
 DISPLAYMANAGER_PASSWORD_LESS_LOGIN="no"
 
 # Login this user when the displaymanager starts
-DISPLAYMANAGER_AUTOLOGIN="guest"
+DISPLAYMANAGER_AUTOLOGIN="retail"
 
