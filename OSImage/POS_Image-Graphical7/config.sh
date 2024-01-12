@@ -1,5 +1,5 @@
 #!/bin/bash
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2022 SUSE LLC
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -34,26 +34,19 @@ echo "Configure image: [$name]..."
 
 #======================================
 # add missing fonts
+# Systemd controls the console font now
 #--------------------------------------
-CONSOLE_FONT="eurlatgr.psfu"
+echo FONT="eurlatgr.psfu" >> /etc/vconsole.conf
 
 #======================================
 # prepare for setting root pw, timezone
 #--------------------------------------
 echo ** "reset machine settings"
 
-# FIXME: 
-#sed -i 's/^root:[^:]*:/root:*:/' /etc/shadow
 rm -f /etc/machine-id \
       /var/lib/zypp/AnonymousUniqueId \
       /var/lib/systemd/random-seed \
       /var/lib/dbus/machine-id
-
-#======================================
-# SuSEconfig
-#--------------------------------------
-echo "** Running suseConfig..."
-suseConfig
 
 echo "** Running ldconfig..."
 /sbin/ldconfig
@@ -86,14 +79,10 @@ USERCONTROL='no'
 EOF
 
 #======================================
-# Enable sshd
-#--------------------------------------
-chkconfig sshd on
-
-#======================================
 # Remove doc files
 #--------------------------------------
-baseStripDocs
+rm -rf /usr/share/doc/*
+rm -rf /usr/share/man/man*/*
 
 #======================================
 # Sysconfig Update
@@ -102,8 +91,10 @@ echo '** Update sysconfig entries...'
 
 baseUpdateSysConfig /etc/sysconfig/network/dhcp DHCLIENT_SET_HOSTNAME yes
 
-# Enable firewalld
-chkconfig firewalld on
+# Enable firewalld if installed
+if [ -x /usr/sbin/firewalld ]; then
+    systemctl enable firewalld
+fi
 
 # Set GRUB2 to boot graphically (bsc#1097428)
 sed -Ei"" "s/#?GRUB_TERMINAL=.+$/GRUB_TERMINAL=gfxterm/g" /etc/default/grub
@@ -113,9 +104,6 @@ sed -Ei"" "s/#?GRUB_GFXMODE=.+$/GRUB_GFXMODE=auto/g" /etc/default/grub
 if [[ "$(uname -m)" =~ i.86|x86_64 ]];then
     echo 'GRUB_USE_LINUXEFI="true"' >> /etc/default/grub
 fi
-
-# Systemd controls the console font now
-echo FONT="$CONSOLE_FONT" >> /etc/vconsole.conf
 
 #======================================
 # SSL Certificates Configuration
@@ -127,9 +115,14 @@ if [ ! -s /var/log/zypper.log ]; then
 	> /var/log/zypper.log
 fi
 
+#=====================================
+# Enable chrony if installed
+#-------------------------------------
+if [ -f /etc/chrony.conf ]; then
+    systemctl enable chronyd.service
+fi
+
 # only for debugging
 #systemctl enable debug-shell.service
-
-baseCleanMount
 
 exit 0
