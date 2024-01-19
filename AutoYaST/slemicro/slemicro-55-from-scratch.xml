@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Profile updated by dvosburg at suse dot com 20231214 - SLE Micro 5.5 with salt bundle
+<!-- Profile updated by dvosburg at suse dot com 20240119 - SLE Micro 5.5 with salt bundle
 It assumes system variables plus these entered on the variables tab:
 org='organization_id'
 distrotree='autoinstallation_distribution_label'
@@ -63,7 +63,14 @@ It also assumes you will edit and make avaialable an install-script-55.sh script
    <drive>
     <disklabel>gpt</disklabel>
     <enable_snapshots config:type="boolean">true</enable_snapshots>
-    <partitions config:type="list">
+    <partitions config:type="list"0>
+<!--  Added EFI partition to support EFI/UEFI boot --> 
+      <partition>
+          <mount>/boot/efi</mount>
+          <size>200mb</size>
+          <partition_id config:type="integer">1</partition_id>
+          <filesystem config:type="symbol">vfat</filesystem>
+      </partition>
       <partition>
         <mount>swap</mount>
         <size>2GiB</size>
