@@ -7,7 +7,7 @@
         <specification>SUSE Linux Enterprise 15 SP3 Graphical Image</specification>
     </description>
     <preferences>
-	<version>7.0.26</version>
+	<version>7.0.27</version>
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>SLE</bootsplash-theme>
         <bootloader-theme>SLE</bootloader-theme>
@@ -113,8 +113,11 @@
         <package name="alsa"/>
         <package name="pulseaudio"/>
         <package name="MozillaFirefox"/>
-	<package name="google-chrome-stable"/>
-        <package name="nautilus"/>
+        <!-- Google Chrome if repo is added
+        <package name="google-chrome-stable"/>
+	    -->
+        <package name="bind-utils"/>
+	<package name="nautilus"/>
     	<package name="gnome-terminal"/>
 
         <!-- Themes and branding -->
