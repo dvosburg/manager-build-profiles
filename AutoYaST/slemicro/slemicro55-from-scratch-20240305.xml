@@ -148,7 +148,7 @@ It also assumes you will edit and make avaialable an install-scrpit-55.sh script
       <package>patterns-microos-sssd_ldap</package>
       <package>python3-pycurl</package>
       <package>python3-simplejson</package>
-      <package>salt-minion</package>
+      <package>venv-salt-minion</package>
     </packages>
     <remove-packages  config:type="list">
       <package>samba-client-libs</package>
