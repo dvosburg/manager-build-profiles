@@ -145,6 +145,7 @@ It also assumes you will edit and make avaialable an install-script-55.sh script
 <!--  Added security section to set SELINUX to permissive for venv-salt-minion.
 --> 
    <security>
+     <lsm_select>selinux</lsm_select>
      <selinux_mode>permissive</selinux_mode>
    </security>
 
