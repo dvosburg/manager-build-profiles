@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Profile updated by dvosburg at suse dot com 20240307 - SLE Micro 5.5 with salt bundle
+<!-- Profile updated by dvosburg at suse dot com 20240326 - SLE Micro 5.5 with salt bundle
 It assumes system variables plus these entered on the variables tab:
 org='organization_id'
 distrotree='autoinstallation_distribution_label'
-It also assumes you will edit and make avaialable an install-script-55.sh script, run-before-login-prompt.service, and boot_script.sh files to be used during initial boot.
+It also assumes you will edit and make available an install-script-55.sh script, run-before-login-prompt.service, and boot_script.sh files to be used during initial boot.
 -->
 <!DOCTYPE profile>
 <profile xmlns="http://www.suse.com/1.0/yast2ns" xmlns:config="http://www.suse.com/1.0/configns">
@@ -58,6 +58,11 @@ It also assumes you will edit and make avaialable an install-script-55.sh script
       <import_gpg_key config:type="boolean">true</import_gpg_key>
     </signature-handling>
   </general>
+
+  <security>
+    <lsm_select>selinux</lsm_select>
+    <selinux_mode>permissive</selinux_mode>
+  </security>
 
   <partitioning config:type="list">
    <drive>
