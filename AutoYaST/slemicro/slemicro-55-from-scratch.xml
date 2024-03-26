@@ -67,7 +67,7 @@ It also assumes you will edit and make available an install-script-55.sh script,
       </disable>
       <enable config:type="list">
         <service>sshd</service>
-        <service>run-before-login-prompt.service</service>
+        <service>run-before-login-prompt</service>
       </enable>
     </services>
   </services-manager>
