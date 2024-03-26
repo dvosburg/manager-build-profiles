@@ -62,9 +62,6 @@ It also assumes you will edit and make available an install-script-55.sh script,
   <services-manager>
     <default_target>multi-user</default_target>
     <services>
-      <disable config:type="list">
-        <service>firewalld</service>
-      </disable>
       <enable config:type="list">
         <service>sshd</service>
         <service>run-before-login-prompt</service>
@@ -72,11 +69,6 @@ It also assumes you will edit and make available an install-script-55.sh script,
     </services>
   </services-manager>
   
-  <security>
-    <lsm_select>selinux</lsm_select>
-    <selinux_mode>permissive</selinux_mode>
-  </security>
-
   <partitioning config:type="list">
    <drive>
     <disklabel>gpt</disklabel>
