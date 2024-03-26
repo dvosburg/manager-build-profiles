@@ -58,7 +58,20 @@ It also assumes you will edit and make available an install-script-55.sh script,
       <import_gpg_key config:type="boolean">true</import_gpg_key>
     </signature-handling>
   </general>
-
+  
+  <services-manager>
+    <default_target>multi-user</default_target>
+    <services>
+      <disable config:type="list">
+        <service>firewalld</service>
+      </disable>
+      <enable config:type="list">
+        <service>sshd</service>
+        <service>run-before-login-prompt.service</service>
+      </enable>
+    </services>
+  </services-manager>
+  
   <security>
     <lsm_select>selinux</lsm_select>
     <selinux_mode>permissive</selinux_mode>
