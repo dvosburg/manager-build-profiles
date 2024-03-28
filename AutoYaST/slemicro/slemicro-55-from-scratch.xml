@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Profile updated by dvosburg at suse dot com 20240326 - SLE Micro 5.5 with salt bundle
+<!-- Profile updated by dvosburg at suse dot com 20240328 - SLE Micro 5.5 with salt bundle
 It assumes system variables plus these entered on the variables tab:
 org='organization_id'
 distrotree='autoinstallation_distribution_label'
-It also assumes you will edit and make available an install-script-55.sh script, run-before-login-prompt.service, and boot_script.sh files to be used during initial boot.
+It also assumes you will edit and make avaialable an install-script-55.sh script, boot_script.sh and
+run-before-login-prompt.service files to be used during initial boot.
 -->
 <!DOCTYPE profile>
 <profile xmlns="http://www.suse.com/1.0/yast2ns" xmlns:config="http://www.suse.com/1.0/configns">
@@ -36,7 +37,7 @@ It also assumes you will edit and make available an install-script-55.sh script,
     </add_on_products>
   </add-on>
 
-  <bootloader>
+   <bootloader>
     <global>
       <timeout config:type="integer">5</timeout>
       <hiddenmenu>false</hiddenmenu>
@@ -58,29 +59,12 @@ It also assumes you will edit and make available an install-script-55.sh script,
       <import_gpg_key config:type="boolean">true</import_gpg_key>
     </signature-handling>
   </general>
-  
-  <services-manager>
-    <default_target>multi-user</default_target>
-    <services>
-      <enable config:type="list">
-        <service>sshd</service>
-        <service>run-before-login-prompt</service>
-      </enable>
-    </services>
-  </services-manager>
-  
+
   <partitioning config:type="list">
    <drive>
     <disklabel>gpt</disklabel>
     <enable_snapshots config:type="boolean">true</enable_snapshots>
-    <partitions config:type="list"0>
-<!--  Added EFI partition to support EFI/UEFI boot --> 
-      <partition>
-          <mount>/boot/efi</mount>
-          <size>200mb</size>
-          <partition_id config:type="integer">1</partition_id>
-          <filesystem config:type="symbol">vfat</filesystem>
-      </partition>
+    <partitions config:type="list">
       <partition>
         <mount>swap</mount>
         <size>2GiB</size>
@@ -152,13 +136,6 @@ It also assumes you will edit and make available an install-script-55.sh script,
    </drive>
   </partitioning>
 
-<!--  Added security section to set SELINUX to permissive for venv-salt-minion.
---> 
-   <security>
-     <lsm_select>selinux</lsm_select>
-     <selinux_mode>permissive</selinux_mode>
-   </security>
-
    <software>
     <products config:type="list">
       <product>SLE-Micro</product>
@@ -184,15 +161,20 @@ It also assumes you will edit and make available an install-script-55.sh script,
     </patterns>
   </software>
 
-<services-manager>
-  <default_target>multi-user</default_target>
-  <services>
-    <enable config:type="list">
-      <service>sshd</service>
-      <service>run-before-login-prompt</service>
-    </enable>
-  </services>
-</services-manager>
+  <services-manager>
+    <default_target>multi-user</default_target>
+    <services>
+      <enable config:type="list">
+        <service>sshd</service>
+        <service>run-before-login-prompt</service>
+      </enable>
+    </services>
+  </services-manager>
+
+  <security>
+     <lsm_select>selinux</lsm_select>
+     <selinux_mode>permissive</selinux_mode>
+  </security>
 
   <users config:type="list">
     <user>
