@@ -59,36 +59,35 @@ run-before-login-prompt.service files to be used during initial boot.
       <import_gpg_key config:type="boolean">true</import_gpg_key>
     </signature-handling>
   </general>
-
-  <partitioning config:type="list">
-   <drive>
-    <disklabel>gpt</disklabel>
-    <enable_snapshots config:type="boolean">true</enable_snapshots>
-    <partitions config:type="list">
-      <partition>
-        <mount>swap</mount>
-        <size>2GiB</size>
-      </partition>
-      <partition>
-        <lvm_group>system</lvm_group>
-        <partition_type>primary</partition_type>
-        <size>max</size>
-      </partition>
-    </partitions>
-    <use>all</use>
-   </drive>
-   <drive>
-    <device>/dev/system</device>
-      <type config:type="symbol">CT_LVM</type>
+  
+ <partitioning config:type="list">
+    <drive>
+      <enable_snapshots config:type="boolean">true</enable_snapshots>
+      <initialize config:type="boolean">false</initialize>
       <partitions config:type="list">
-      <partition>
+        <partition>
+          <create config:type="boolean">true</create>
+          <filesystem config:type="symbol">vfat</filesystem>
+          <format config:type="boolean">true</format>
+          <mount>/boot/efi</mount>
+          <mountby config:type="symbol">uuid</mountby>
+          <partition_id config:type="integer">259</partition_id>
+          <partition_nr config:type="integer">1</partition_nr>
+          <resize config:type="boolean">false</resize>
+          <size>524288000</size>
+        </partition>
+        <partition>
           <create config:type="boolean">true</create>
           <create_subvolumes config:type="boolean">true</create_subvolumes>
           <filesystem config:type="symbol">btrfs</filesystem>
-          <lv_name>root_lv</lv_name>
+          <format config:type="boolean">true</format>
           <mount>/</mount>
-          <size>20G</size>
-           <subvolumes config:type="list">
+          <mountby config:type="symbol">uuid</mountby>
+          <partition_id config:type="integer">131</partition_id>
+          <partition_nr config:type="integer">2</partition_nr>
+          <resize config:type="boolean">false</resize>
+          <size>max</size>
+          <subvolumes config:type="list">
             <subvolume>
               <copy_on_write config:type="boolean">true</copy_on_write>
               <path>opt</path>
@@ -124,15 +123,9 @@ run-before-login-prompt.service files to be used during initial boot.
           </subvolumes>
           <subvolumes_prefix><![CDATA[@]]></subvolumes_prefix>
         </partition>
-        <partition>
-          <filesystem config:type="symbol">xfs</filesystem>
-          <lv_name>containerstorage_lv</lv_name>
-          <mount>/var/lib/containers/storage/</mount>
-          <size>max</size>
-        </partition>
-       </partitions>
-      <pesize>4M</pesize>
-    <use>all</use>
+        </partitions>
+      <type config:type="symbol">CT_DISK</type>
+      <use>all</use>
    </drive>
   </partitioning>
 
