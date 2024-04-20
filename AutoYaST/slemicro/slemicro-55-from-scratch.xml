@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Profile updated by dvosburg at suse dot com 20240328 - SLE Micro 5.5 with salt bundle
+<!-- Profile updated by dvosburg at suse dot com 20240420 - SLE Micro 5.5 with salt bundle
 It assumes system variables plus these entered on the variables tab:
 org='organization_id'
 distrotree='autoinstallation_distribution_label'
@@ -139,6 +139,7 @@ run-before-login-prompt.service files to be used during initial boot.
       <package>open-iscsi</package>
       <package>NetworkManager</package>
       <package>dmidecode</package>
+      <package>hostname</package>
       <package>patterns-microos-sssd_ldap</package>
       <package>python3-pycurl</package>
       <package>python3-simplejson</package>
