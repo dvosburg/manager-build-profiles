@@ -8,6 +8,7 @@ REGISTRATION_KEY=1-slemicro55
 SALT_MINION_CONF_DIR="/etc/venv-salt-minion/minion.d"
 SALT_MINION_SERVICE="venv-salt-minion"
 SALT_MINION_DIR="/etc/venv-salt-minion"
+HOSTNAME_PREFIX=lab
 
 # temporarily set SELinux to permissive
 setenforce 0
@@ -15,6 +16,8 @@ systemctl --now disable transactional-update.timer
 curl -skS https://$SM_SERVER/pub/RHN-ORG-TRUSTED-SSL-CERT --output /etc/pki/trust/anchors/RHN-ORG-TRUSTED-SSL-CERT
 update-ca-certificates
 
+# Optionally set hostname to a prefix with IP concatenation
+# hostset=`hostname -I | cut -f1 -d' '| sed s/\[.]/-/g` && hostnamectl set-hostname $HOSTNAME_PREFIX-$hostset
 hostname > $SALT_MINION_DIR/minion_id
 echo "master: $SM_SERVER" > $SALT_MINION_CONF_DIR/susemanager.conf
 echo "server_id_use_src: adler42" >> $SALT_MINION_CONF_DIR/susemanager.conf
