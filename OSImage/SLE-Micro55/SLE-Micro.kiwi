@@ -115,7 +115,7 @@
 
 
     <preferences profiles="x86,x86-rt">
-        <version>5.4.0</version>
+        <version>5.5.0</version>
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>SLE</bootsplash-theme>
         <bootloader-theme>SLE</bootloader-theme>
@@ -153,7 +153,7 @@
     </preferences>
 
     <preferences profiles="x86-self_install,x86-rt-self_install">
-        <version>5.4.0</version>
+        <version>5.5.0</version>
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>SLE</bootsplash-theme>
         <bootloader-theme>SLE</bootloader-theme>
@@ -194,7 +194,7 @@
     </preferences>
 
     <preferences profiles="rpi">
-        <version>5.4.0</version>
+        <version>5.5.0</version>
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>SLE</bootsplash-theme>
         <bootloader-theme>SLE</bootloader-theme>
@@ -234,7 +234,7 @@
     </preferences>
 
     <preferences profiles="s390-kvm">
-        <version>5.4.0</version>
+        <version>5.5.0</version>
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>SLE</bootsplash-theme>
         <bootloader-theme>SLE</bootloader-theme>
@@ -273,7 +273,7 @@
 
 
     <preferences profiles="s390-dasd">
-        <version>5.4.0</version>
+        <version>5.5.0</version>
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>SLE</bootsplash-theme>
         <bootloader-theme>SLE</bootloader-theme>
@@ -314,7 +314,7 @@
 
 
     <preferences profiles="s390-fba">
-        <version>5.4.0</version>
+        <version>5.5.0</version>
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>SLE</bootsplash-theme>
         <bootloader-theme>SLE</bootloader-theme>
@@ -354,7 +354,7 @@
 
 
     <preferences profiles="x86-vdi">
-        <version>5.4.0</version>
+        <version>5.5.0</version>
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>SLE</bootsplash-theme>
         <bootloader-theme>SLE</bootloader-theme>
@@ -394,7 +394,7 @@
     </preferences>
 
     <preferences profiles="x86-vdi-legacy">
-        <version>5.4.0</version>
+        <version>5.5.0</version>
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>SLE</bootsplash-theme>
         <bootloader-theme>SLE</bootloader-theme>
@@ -433,7 +433,7 @@
         </type>
     </preferences>
     <preferences profiles="x86-qcow">
-        <version>5.4.0</version>
+        <version>5.5.0</version>
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>SLE</bootsplash-theme>
         <bootloader-theme>SLE</bootloader-theme>
@@ -467,6 +467,7 @@
                 <volume name="boot/writable"/>
 		<volume name="usr/local"/>
             </systemdisk>
+            <size unit="G">20</size>
         </type>
     </preferences>
 
