@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed May 29 11:42:41 UTC 2024 - dvosburg@suse.com
+
+- Added size for the qcow image
+- bump to 5.5
+
+-------------------------------------------------------------------
 Fri Mar 31 11:42:41 UTC 2023 - jsrain@suse.com
 
 - explicilty specify NetworkManagr branding package
