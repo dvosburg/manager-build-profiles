@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- OBS-Profiles: @BUILD_FLAVOR@ -->
 <!-- OBS-Milestone: %current_milestone -->
-<image schemaversion="6.7" name="SLE-Micro" displayname="SLE Micro">
+<image schemaversion="6.7" name="SLE-Micro-55" displayname="SLE Micro 5.5">
     <description type="system">
         <author>SUSE</author>
         <contact>crc@suse.com</contact>
