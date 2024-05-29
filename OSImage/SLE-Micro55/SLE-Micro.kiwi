@@ -4,7 +4,7 @@
 <image schemaversion="6.7" name="SLE-Micro-55" displayname="SLE Micro 5.5">
     <description type="system">
         <author>SUSE</author>
-        <contact>crc@suse.com</contact>
+        <contact>dvosburg@suse.com</contact>
         <specification>SLE Micro</specification>
     </description>
     <profiles>
