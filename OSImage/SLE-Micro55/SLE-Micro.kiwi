@@ -476,8 +476,10 @@
     </repository>
 
     <packages type="image" profiles="full">
+        <!--
         <namedCollection name="microos-salt_minion"/>
 	<package name="patterns-microos-salt_minion"/>
+  	-->     
         <namedCollection name="microos-kvm_host"/>
 	<package name="patterns-microos-kvm_host"/>
         <namedCollection name="microos-container_runtime"/>
@@ -495,6 +497,8 @@
 	<package name="systemd-presets-branding-SMO"/>
 	<package name="systemd-default-settings-branding-SLE-Micro"/>
 	<package name="firewalld"/>
+        <!-- include salt bundle (assumes SUMA repos)  -->
+        <package name="venv-salt-minion"/>
 	<package name="wpa_supplicant" arch="x86_64,aarch64"/>
 
         <!-- include directly to avoid cockpit-machines (bsc#1196971)  -->
