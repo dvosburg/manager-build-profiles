@@ -454,8 +454,7 @@
             btrfs_root_is_snapshot="true"
             btrfs_root_is_readonly_snapshot="true"
             btrfs_quota_groups="true"
-            spare_part="5G" spare_part_mountpoint="/var" spare_part_fs="btrfs" spare_part_is_last="true" spare_part_fs_attributes="no-copy-on-write"
-        >
+>
             <systemdisk>
                 <volume name="home"/>
                 <volume name="root"/>
@@ -466,6 +465,7 @@
                 <volume name="boot/grub2/x86_64-efi" mountpoint="boot/grub2/x86_64-efi"/>
                 <volume name="boot/writable"/>
 		<volume name="usr/local"/>
+                <volume name="var" copy_on_write="false"/>
             </systemdisk>
             <size unit="G">20</size>
         </type>
