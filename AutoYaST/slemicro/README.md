@@ -9,6 +9,7 @@ Please edit the 'install-script.sh' with the IP/FQDN of your SUMA server.  An ex
 Since init-scripts are not used with SLE Micro, it can use an '/etc/init.d/after.local' script to complete the salt minion setup.  Copy the example 'after.local'  to your SUMA server in /srv/www/htdocs/pub/bootstrap/, and edit as needed.  Variables are at the top.
 
 A more modern way is to use systemd - and an example is used here in the 'install-script-55.sh' file.  It installs a 'run-before-login-prompt.service file in '/etc/systemd/system', and references a 'boot_script.sh' file placed in '/usr/local/bin'.  Copy these files to your SUMA server in '/srv/www/htdocs/pub/bootstrap/' and edit as required.  Again, variables are at the top of each file.
+Make sure the service is enabled in your profile - the 'slemicro-55-from-scratch.xml' has this included.
 
 ## Variables in after.local/boot_script.sh and install-script.sh
 
