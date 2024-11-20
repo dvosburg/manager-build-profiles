@@ -121,9 +121,8 @@
     	<package name="gnome-terminal"/>
 
         <!-- Themes and branding -->
-        <package name="gnome-icon-theme"/>
+        <!--  removed for sp6 "gnome-icon-theme" -->
         <package name="gnome-menus-branding-SLE"/>
-        <package name="gtk2-metatheme-adwaita"/>
         <package name="gtk3-metatheme-adwaita"/>
         <package name="gdm-branding-SLE"/>
         <package name="branding-SLE"/>
