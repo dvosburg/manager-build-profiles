@@ -4,10 +4,10 @@
     <description type="system">
         <author>dvosburg</author>
         <contact>dvosburg@suse.com</contact>
-        <specification>SUSE Linux Enterprise 15 SP3 Graphical Image</specification>
+        <specification>SUSE Linux Enterprise 15 SP6 Graphical Image</specification>
     </description>
     <preferences>
-	<version>7.0.27</version>
+	<version>7.0.28</version>
         <packagemanager>zypper</packagemanager>
         <bootsplash-theme>SLE</bootsplash-theme>
         <bootloader-theme>SLE</bootloader-theme>
@@ -46,7 +46,6 @@
         <package name="zypper-lifecycle-plugin"/> <!-- bsc#1030278 fate#320597 -->
         <package name="vim"/>
         <package name="shim" arch="x86_64"/>
-	<package name="kbd"/>
         <package name="grub2"/>
         <package name="grub2-x86_64-efi" arch="x86_64"/>
         <package name="grub2-arm64-efi" arch="aarch64"/>
