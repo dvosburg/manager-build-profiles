@@ -125,7 +125,4 @@ fi
 # only for debugging
 #systemctl enable debug-shell.service
 
-# Make keyboard softlink if not there
-ln -s /usr/share/kbd/keymaps/xkb/cm.map.gz  /usr/share/kbd/keymaps/xkb/us.map.gz
-
 exit 0
