@@ -358,6 +358,7 @@ registration_key='activation_key_for_post_upgrade'
     <instsource/>
     <packages config:type="list">
       <package>vim</package>
+      <package>wget</package>
       <package>iputils</package>
       <package>openssh-server</package>
       <package>openssh</package>
