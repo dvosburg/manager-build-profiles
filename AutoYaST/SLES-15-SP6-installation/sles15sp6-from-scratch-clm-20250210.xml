@@ -403,7 +403,7 @@ registration_key='activation_key_for_post_upgrade'
         <filename>01_install_cert</filename>
         <interpreter>shell</interpreter>
         <source><![CDATA[
-/usr/bin/wget -nv -r -nd --no-check-certificate https://$redhat_management_server/pub/RHN-ORG-TRUSTED-SSL-CERT
+/usr/bin/curl --insecure -o RHN-ORG-TRUSTED-SSL-CERT https://$redhat_management_server/pub/RHN-ORG-TRUSTED-SSL-CERT
 mv RHN-ORG-TRUSTED-SSL-CERT /etc/pki/trust/anchors/
 /usr/sbin/update-ca-certificates
      ]]></source>
@@ -421,7 +421,7 @@ mv RHN-ORG-TRUSTED-SSL-CERT /etc/pki/trust/anchors/
 /mnt/usr/bin/zypper ms -e --medium-type plugin
 /mnt/usr/bin/zypper mr -d --all
 /mnt/usr/bin/zypper mr -e --medium-type plugin
-/usr/bin/wget -nv -r -nd --no-check-certificate https://$redhat_management_server/pub/RHN-ORG-TRUSTED-SSL-CERT
+/usr/bin/curl --insecure -o RHN-ORG-TRUSTED-SSL-CERT https://$redhat_management_server/pub/RHN-ORG-TRUSTED-SSL-CERT
 mv RHN-ORG-TRUSTED-SSL-CERT /mnt/etc/pki/trust/anchors/
 /usr/sbin/update-ca-certificates
 ]]>
